@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up Sheet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+    <form onsubmit="return Outputter();">
+        <fieldset>
+            
+            <legend>Interactive Sign-up Sheet</legend>
+            
+            <br/><label for="name">Name: </label><br/>
+            <input type="text" id="name" name="name" onblur="Border(this)" onfocus="Border1(this)">
+           
+            <br/><br/><label for="nickname">Preferred Username: </label><br/>
+            <input type="text" id="nickname" name="nickname"  onblur="Border(this)" onfocus="Border1(this)">
+            
+            <br/><label for="age">Age: </label><br/>
+            <input type="number" id="age" name="age" min="1" max="100" onblur="Border(this)" onfocus="Border1(this)">
+
+            <br/><br/><label for="gender">Gender: </label><br/>
+            <select name="gender" id="gender"  onblur="Border(this)" onfocus="Border1(this)">
+                <option value="">Select</option>
+                <option value="male"  onclick="Border(this)" >Male</option>
+                <option value="female"  onclick="Border(this)" >Female</option>
+                <option value="pntm"  onclick="Border(this)">Prefer not to mention</option>
+            </select>
+
+            <br/><br/><label for="password">Password: </label><br/>
+            <input type="password" id="password" name="password"  onblur="Border(this)" onfocus="Border1(this)">
+            
+            <br/><br/><label for="email">Email: </label><br/>
+            <input type="text" id="email" name="email"  onblur="Border(this)" onfocus="Border1(this)">
+           
+            <br/><br/><label for="address">Address: </label><br/>
+            <input type="text" id="address" name="address"  onblur="Border(this)" onfocus="Border1(this)">
+            
+            <br/><br/><label for="interests">Interests: </label></br>
+            <textarea id="interests" name="interests" rows="4" cols="50"  onblur="Border(this)" onfocus="Border1(this)"> </textarea>    
+            
+            <br/><br/><input type = "submit" value = "Submit form">
+             <input type = "reset" value = "Reset" onclick="hardReset()">
+
+        </fieldset>
+    </form>
+   
+    
+    <p id="output"></p>
+
+    <script>
+
+        function Border(x) {
+        if(x.value === '')
+        {
+            x.style.border = '2px solid red';
+        }
+        else
+        {
+                x.style.border = '2px solid green';
+        }
+        }
+        
+
+        function Border1(x) {
+            x.style.border = '';
+        }
+
+        function Outputter(){
+        var name = document.getElementById("name").value;
+        var nickname = document.getElementById("nickname").value;
+        var gender = document.getElementById("gender").value;
+        var password = document.getElementById("password").value;
+        var email = document.getElementById("email").value;
+        var address = document.getElementById("address").value;
+        var age = document.getElementById("age").value;
+        var interests = document.getElementById("interests").value;
+    
+       
+        var output = "Name: " + "<br>" +  name  + "<br>" + "<br>" +
+        "Nickname: " + "<br>" +  nickname  +  "<br>" + "<br>" +
+        "Age: " + "<br>" + age + " years old" + "<br>" + "<br>" +
+        "Gender: " + "<br>" + gender + "<br>" + "<br>" + 
+        "Password: " + "<br>" + password  +  "<br>" + "<br>" + 
+        "Email: " + "<br>" + email  + "<br>" + "<br>" +
+        "Address: " + "<br>" + address  + "<br>" + "<br>" +
+        "Interests: " + "<br>" + interests  + "<br>";
+
+        document.getElementById("output").innerHTML = output;
+
+        return false;
+        }
+
+        function hardReset(){
+            document.getElementById("name").value = "";
+            document.getElementById("nickname").value = "";
+            document.getElementById("gender").value  = "";
+            document.getElementById("password").value  = "";
+            document.getElementById("email").value  = "";
+            document.getElementById("address").value  = "";
+            document.getElementById("age").value  = "";
+            document.getElementById("interests").value  = "";
+
+            document.getElementById("output").innerHTML="";
+
+            Border1(document.getElementById("name"));
+            Border1(document.getElementById("nickname"));
+            Border1(document.getElementById("gender"));
+            Border1(document.getElementById("password"));
+            Border1(document.getElementById("email"));
+            Border1(document.getElementById("address"));
+            Border1(document.getElementById("age"));
+            Border1(document.getElementById("interests"));
+
+        }
+        
+    </script>
+
+    
+
+</body>
+</html>
